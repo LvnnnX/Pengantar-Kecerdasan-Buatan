@@ -1,9 +1,12 @@
 #Importing
-import dictdiffer
 import pandas as pd
-from copy import deepcopy
 import matplotlib.pyplot as plt
 from pandas.plotting import table
+from pathlib import Path
+
+PATH = Path(__file__).parent
+IMG_DIR = PATH / 'img'
+
 
 START_STATE = {'kambing': 'asal', 'serigala': 'asal', 'sayuran': 'asal', 'perahu': 'asal'}
 FINAL_STATE = {'kambing': 'tujuan', 'serigala': 'tujuan', 'sayuran': 'tujuan', 'perahu': 'tujuan'}
@@ -97,7 +100,7 @@ def get_bfs():
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
     table(ax,bfs_hasil,loc='center')
-    plt.savefig('bfs.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'{IMG_DIR}/bfs.png', dpi=300, bbox_inches='tight')
 
 def get_dfs():
     dfs_hasil = dfs(START_STATE, FINAL_STATE)
@@ -108,7 +111,7 @@ def get_dfs():
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
     table(ax,dfs_df,loc='center')
-    plt.savefig('dfs.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'{IMG_DIR}/dfs.png', dpi=300, bbox_inches='tight')
     
 
 get_dfs()
